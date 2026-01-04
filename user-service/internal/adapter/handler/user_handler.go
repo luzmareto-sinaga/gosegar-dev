@@ -64,14 +64,6 @@ func (u *UserHandler) SignIn(c echo.Context) error {
 		resp.Data = nil
 		return c.JSON(http.StatusInternalServerError, resp)
 	}
-	// tambahan logging signin success
-	log.Infof(
-		"[UserHandler] event=signin_success user_id=%d email=%s ip=%s user_agent=%s",
-		user.ID,
-		user.Email,
-		c.RealIP(),
-		c.Request().UserAgent(),
-	)
 
 	respSignIn.ID = user.ID
 	respSignIn.Name = user.Name

@@ -41,12 +41,6 @@ func (u *userService) SignIn(ctx context.Context, req entity.UserEntity) (*entit
 		return nil, "", err
 	}
 
-	log.Infof(
-		"[UserService] event=signin_success user_id=%d email=%s",
-		user.ID,
-		user.Email,
-	)
-
 	sessionData := map[string]interface{}{
 		"user_data":  user.ID,
 		"name":       user.Name,
@@ -62,11 +56,6 @@ func (u *userService) SignIn(ctx context.Context, req entity.UserEntity) (*entit
 		log.Errorf("[UserService-4] SignIn: %v", err)
 		return nil, "", err
 	}
-	log.Infof(
-		"[UserService] event=session_created user_id=%d redis_key=%s",
-		user.ID,
-		token[:10],
-	)
 
 	return user, token, nil
 }

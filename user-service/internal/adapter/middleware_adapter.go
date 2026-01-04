@@ -26,7 +26,7 @@ func (m *middlewareAdapter) CheckToken() echo.MiddlewareFunc {
 			redisConn := config.NewRedisClient()
 			authHeader := c.Request().Header.Get("Authorization")
 			if authHeader == "" {
-				log.Errorf("[MiddlewareAdapter-1] CheckToken: %s", "mis                    sing or invalid token")
+				log.Errorf("[MiddlewareAdapter-1] CheckToken: %s", "missing or invalid token")
 				respErr.Message = "missing or invalid token "
 				respErr.Data = nil
 				return c.JSON(http.StatusUnauthorized, respErr)
