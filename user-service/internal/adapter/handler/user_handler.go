@@ -71,6 +71,9 @@ func (u *UserHandler) SignIn(c echo.Context) error {
 	respSignIn.Lng = user.Lng
 	respSignIn.AccessToken = token
 
+	resp.Message = "Success"
+	resp.Data = respSignIn
+
 	return c.JSON(http.StatusOK, resp)
 }
 
