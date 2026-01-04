@@ -1,0 +1,17 @@
+package model
+
+import "time"
+
+type UserRole struct {
+	ID        int `gorm:"primaryKey"`
+	RoleID    int `gorm:"index"`
+	UserID    int `gorm:"index"`
+	CreatedAt time.Time
+	UpdatedAt time.Time
+	DeletedAt *time.Time
+}
+
+// mengubah nama tabel user_roles menjadi user_role
+func (UserRole) TableName() string {
+	return "user_role"
+}
